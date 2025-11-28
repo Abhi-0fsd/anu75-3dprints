@@ -1,93 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Printing Products</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Printing Products</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f3f3f3;
-            margin: 0;
-            padding-top: 70px;
-        }
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding-top: 100px;
+    min-height: 100vh;
+    background: url('your-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+  }
 
-        /* Top Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #007bff;
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-left: 20px;
-            padding-right: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
+  /* Animated gradient overlay */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(270deg, rgba(51, 14, 138, 0.5), rgba(206, 20, 51, 0.5), rgba(56, 100, 170, 0.5), rgba(255,117,140,0.5));
+    background-size: 800% 800%;
+    animation: gradientAnimation 20s ease infinite;
+    z-index: 0;
+  }
 
-        .help-btn {
-            background: white;
-            color: #007bff;
-            padding: 8px 18px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            transition: 0.3s;
-        }
+  @keyframes gradientAnimation {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
 
-        .help-btn:hover {
-            background: #e3e3e3;
-            transform: scale(1.05);
-        }
+  /* Keep content above overlay */
+  .header, h1, .menu-btn {
+    position: relative;
+    z-index: 1;
+  }
 
-        h1 {
-            color: #333;
-        }
+  /* Top Header */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,123,255,0.8);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+  }
 
-        button {
-            display: block;
-            margin: 20px auto;
-            padding: 15px 40px;
-            font-size: 18px;
-            border: none;
-            background-color: #007bff;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+  .help-btn {
+    background: white;
+    color: #007bff;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+  }
 
-        button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-    </style>
+  .help-btn:hover {
+    background: #e3e3e3;
+    transform: scale(1.05);
+  }
 
+  h1 {
+    color: #fff;
+    font-size: 36px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    margin-bottom: 50px;
+  }
+
+  /* Buttons as cards */
+  .menu-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 20px 50px;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6ec4, #7873f5);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 280px;
+    font-weight: bold;
+    z-index: 1;
+  }
+
+  .menu-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+  }
+
+  /* Responsive */
+  @media(max-width: 400px) {
+    .menu-btn { width: 90%; padding: 15px 0; font-size: 18px; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Top Header Bar -->
-    <div class="header">
-        3D PRINTING PRODUCTS
-        <button class="help-btn" onclick="location.href='contacts.html'">HELP</button>
-    </div><br>
+<div class="header">
+  3D PRINTING PRODUCTS
+  <button class="help-btn" onclick="location.href='contacts.html'">HELP</button>
+</div>
 
-    <h1><b>Welcome</b></h1>
+<h1>Welcome</h1>
 
-    <button onclick="location.href='keychains.html'">KEYCHAINS</button>
-    <button onclick="location.href='gifts.html'">GIFTS ITEMS</button>
-    <button onclick="location.href='photos.html'">PHOTOS AND FRAMES</button>
-    <button onclick="location.href='machines.html'">MACHINE COMPONENTS</button>
+<button class="menu-btn" onclick="location.href='keychains.html'">KEYCHAINS</button>
+<button class="menu-btn" onclick="location.href='gifts.html'">GIFTS ITEMS</button>
+<button class="menu-btn" onclick="location.href='photos.html'">PHOTOS AND FRAMES</button>
+<button class="menu-btn" onclick="location.href='machines.html'">MACHINE COMPONENTS</button>
 
 </body>
 </html>

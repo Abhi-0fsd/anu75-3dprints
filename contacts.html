@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,119 +8,183 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
     margin: 0;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
   }
 
-h2 {
-font-size: 32px;
-font-weight: bold;
-margin-bottom: 30px;
-text-align: center;
-}
+  /* ---- Animated Gradient Background ---- */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(270deg, #ff7eb3, #ff758c, #ff7eb3, #ff758c);
+    background-size: 800% 800%;
+    animation: gradientAnimation 20s ease infinite;
+    z-index: 0;
+  }
 
-.grid {
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-gap: 25px;
-justify-items: center;
-width: 100%;
-max-width: 400px;
-}
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-.card {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-width: 120px;
-height: 120px;
-border-radius: 20px;
-background: linear-gradient(145deg, #ff0080, #7928ca);
-color: #fff;
-font-size: 22px;
-text-decoration: none;
-transition: transform 0.2s, box-shadow 0.2s;
-box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-cursor: pointer;
-position: relative;
-opacity: 0;
-transform: translateY(50px);
-animation: slideIn 0.5s forwards;
-}
+  /* ---- Ensure Content is Above Background ---- */
+  .header-box, h2, .grid, .back-btn {
+    position: relative;
+    z-index: 1;
+  }
 
-.card:nth-child(1) { animation-delay: 0.2s; }
-.card:nth-child(2) { animation-delay: 0.4s; }
-.card:nth-child(3) { animation-delay: 0.6s; }
-.card:nth-child(4) { animation-delay: 0.8s; }
+  /* ---- HEADER STYLING ---- */
+  .header-box {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
 
-@keyframes slideIn {
-to { opacity: 1; transform: translateY(0); }
-}
+  .header-box h1 {
+    font-size: 34px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+  }
 
-.card:hover {
-transform: scale(1.15);
-box-shadow: 0 0 20px rgba(255,0,128,0.7), 0 0 30px rgba(121,40,202,0.5);
-}
+  .line {
+    height: 6px;
+    width: 100%;                 
+    background: linear-gradient(90deg, #75225a, #7928ca);
+    border-radius: 5px;
+    margin: 10px 0;
+  }
 
-.card img {
-width: 60px;
-margin-bottom: 10px;
-}
+  h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+  }
 
-.card span {
-font-size: 18px;
-font-weight: bold;
-}
+  /* ---- GRID & CARD ---- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    width: 100%;
+    max-width: 400px;
+    row-gap: 50px;
+    column-gap: 25px; 
+  }
 
-.back-btn {
-margin-top: 40px;
-padding: 16px 40px;
-background: #007bff;
-color: white;
-border-radius: 12px;
-border: none;
-cursor: pointer;
-font-size: 20px;
-transition: 0.25s;
-}
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 140px;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #190ee2, #7928ca);
+    color: #fff;
+    font-size: 22px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    cursor: pointer;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideIn 0.5s forwards;
+  }
 
-.back-btn:hover {
-background: #0056b3;
-transform: scale(1.05);
-}
+  .card:nth-child(1) { animation-delay: 0.2s; }
+  .card:nth-child(2) { animation-delay: 0.4s; }
+  .card:nth-child(3) { animation-delay: 0.6s; }
+  .card:nth-child(4) { animation-delay: 0.8s; }
+
+  @keyframes slideIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 25px rgba(255,0,128,0.7), 0 0 35px rgba(121,40,202,0.5);
+  }
+
+  .card img {
+    width: 80px;
+    margin-bottom: 12px;
+  }
+
+  .card span {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /* ---- BACK BUTTON ---- */
+  .back-btn {
+    margin-top: 40px;
+    padding: 16px 40px;
+    background: #007bff;
+    color: white;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.25s;
+  }
+
+  .back-btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 350px) {
+    .grid { grid-template-columns: 1fr; row-gap: 40px; column-gap: 0; }
+    .card { width: 120px; height: 120px; font-size: 18px; }
+    .card img { width: 70px; }
+  }
 </style>
 
 </head>
 <body>
 
-<h2>CONTACT DETAILS</h2>
+<div class="header-box">
+  <div class="line"></div>
+  <h1>CONTACT INFORMATION</h1>
+  <div class="line"></div>
+</div>
+
+<h2>HI, HOW CAN I HELP YOU?</h2>
 
 <div class="grid">
 
-  <!-- CALL -->
   <div class="card" onclick="handleClick('tel:+919444210661')">
     <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png">
     <span>Call</span>
   </div>
 
-  <!-- WHATSAPP -->
   <div class="card" onclick="handleClick('https://wa.me/919444210661?text=Hello%20I%20am%20interested%20in%20your%20products')">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
     <span>WhatsApp</span>
   </div>
 
-  <!-- INSTAGRAM -->
   <div class="card" onclick="handleClick('https://www.instagram.com/anu.3dprints')">
     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
     <span>Instagram</span>
   </div>
 
-  <!-- EMAIL -->
   <div class="card" onclick="sendMail()">
     <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
     <span>Email</span>
@@ -134,7 +197,6 @@ transform: scale(1.05);
 <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
 
 <script>
-// For Call, WhatsApp, Instagram
 function handleClick(url) {
     if (navigator.vibrate) navigator.vibrate(100);
     document.getElementById('clickSound').play();
@@ -146,7 +208,6 @@ function handleClick(url) {
     }
 }
 
-// For Email ONLY (this MUST open directly)
 function sendMail() {
     window.location.href =
       "mailto:anu.3dprints@gmail.com?subject=Product%20Enquiry&body=Hello,%20I%20am%20interested%20in%20your%20products.%20Please%20share%20details.";
