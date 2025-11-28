@@ -3,216 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Details</title>
+<title>Contact Information</title>
 
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-  }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background: #f8f8f8;
+    }
 
-  /* ---- Animated Gradient Background ---- */
-  body::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(270deg, #ff7eb3, #ff758c, #ff7eb3, #ff758c);
-    background-size: 800% 800%;
-    animation: gradientAnimation 20s ease infinite;
-    z-index: 0;
-  }
+    /* Top Gradient Border */
+    .top-border {
+        width: 100%;
+        height: 10px;
+        background: linear-gradient(to right, #ff1493, #a200ff);
+    }
 
-  @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+    h1 {
+        margin-top: 20px;
+        font-size: 32px;
+        font-weight: bold;
+    }
 
-  /* ---- Ensure Content is Above Background ---- */
-  .header-box, h2, .grid, .back-btn {
-    position: relative;
-    z-index: 1;
-  }
+    h2 {
+        font-size: 22px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
 
-  /* ---- HEADER STYLING ---- */
-  .header-box {
-    text-align: center;
-    margin-bottom: 20px;
-    width: 100%;
-  }
+    /* Contact Buttons Grid */
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 150px);
+        justify-content: center;
+        gap: 25px;
+    }
 
-  .header-box h1 {
-    font-size: 34px;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #fff;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
-  }
+    .btn-box {
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(135deg, #ff1493, #8a2be2);
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+    }
 
-  .line {
-    height: 6px;
-    width: 100%;                 
-    background: linear-gradient(90deg, #75225a, #7928ca);
-    border-radius: 5px;
-    margin: 10px 0;
-  }
+    .btn-box:hover {
+        transform: scale(1.07);
+    }
 
-  h2 {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #fff;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
-  }
+    .btn-box img {
+        width: 55px;
+        margin-bottom: 10px;
+    }
 
-  /* ---- GRID & CARD ---- */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-    width: 100%;
-    max-width: 400px;
-    row-gap: 50px;
-    column-gap: 25px; 
-  }
+    /* Back Button */
+    .back-btn {
+        margin-top: 40px;
+        padding: 12px 30px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: 0.3s;
+    }
 
-  .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 140px;
-    height: 140px;
-    border-radius: 25px;
-    background: linear-gradient(145deg, #190ee2, #7928ca);
-    color: #fff;
-    font-size: 22px;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    cursor: pointer;
-    position: relative;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: slideIn 0.5s forwards;
-  }
+    .back-btn:hover {
+        background: #0056b3;
+    }
 
-  .card:nth-child(1) { animation-delay: 0.2s; }
-  .card:nth-child(2) { animation-delay: 0.4s; }
-  .card:nth-child(3) { animation-delay: 0.6s; }
-  .card:nth-child(4) { animation-delay: 0.8s; }
-
-  @keyframes slideIn {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .card:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 25px rgba(255,0,128,0.7), 0 0 35px rgba(121,40,202,0.5);
-  }
-
-  .card img {
-    width: 80px;
-    margin-bottom: 12px;
-  }
-
-  .card span {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  /* ---- BACK BUTTON ---- */
-  .back-btn {
-    margin-top: 40px;
-    padding: 16px 40px;
-    background: #007bff;
-    color: white;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    transition: 0.25s;
-  }
-
-  .back-btn:hover {
-    background: #0056b3;
-    transform: scale(1.05);
-  }
-
-  /* ---- RESPONSIVE ---- */
-  @media (max-width: 350px) {
-    .grid { grid-template-columns: 1fr; row-gap: 40px; column-gap: 0; }
-    .card { width: 120px; height: 120px; font-size: 18px; }
-    .card img { width: 70px; }
-  }
+    .bottom-border {
+        width: 100%;
+        height: 10px;
+        background: linear-gradient(to right, #ff1493, #a200ff);
+        margin-top: 40px;
+    }
 </style>
-
 </head>
 <body>
 
-<div class="header-box">
-  <div class="line"></div>
-  <h1>CONTACT INFORMATION</h1>
-  <div class="line"></div>
-</div>
+<div class="top-border"></div>
 
+<h1>CONTACT INFORMATION</h1>
 <h2>HI, HOW CAN I HELP YOU?</h2>
 
-<div class="grid">
+<div class="container">
 
-  <div class="card" onclick="handleClick('tel:+919444210661')">
-    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png">
-    <span>Call</span>
-  </div>
+    <!-- CALL -->
+    <a class="btn-box" href="tel:+919876543210">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/phone.png" alt="Call">
+        Call
+    </a>
 
-  <div class="card" onclick="handleClick('https://wa.me/919444210661?text=Hello%20I%20am%20interested%20in%20your%20products')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-    <span>WhatsApp</span>
-  </div>
+    <!-- WHATSAPP -->
+    <a class="btn-box" href="https://wa.me/919876543210">
+        <img src="https://img.icons8.com/color/96/whatsapp.png" alt="WhatsApp">
+        WhatsApp
+    </a>
 
-  <div class="card" onclick="handleClick('https://www.instagram.com/anu.3dprints')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
-    <span>Instagram</span>
-  </div>
+    <!-- INSTAGRAM -->
+    <a class="btn-box" href="https://instagram.com/yourprofile">
+        <img src="https://img.icons8.com/fluency/96/instagram-new.png" alt="Instagram">
+        Instagram
+    </a>
 
-  <div class="card" onclick="sendMail()">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
-    <span>Email</span>
-  </div>
-
+    <!-- EMAIL -->
+    <a class="btn-box" href="mailto:youremail@gmail.com">
+        <img src="https://img.icons8.com/fluency/96/gmail.png" alt="Email">
+        Email
+    </a>
 </div>
 
-<button class="back-btn" onclick="location.href='index.html'">BACK</button>
+<button class="back-btn" onclick="history.back()">BACK</button>
 
-<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
-
-<script>
-function handleClick(url) {
-    if (navigator.vibrate) navigator.vibrate(100);
-    document.getElementById('clickSound').play();
-
-    if (url.startsWith('http')) {
-        window.open(url, '_blank');
-    } else {
-        window.location.href = url;
-    }
-}
-
-function sendMail() {
-    window.location.href =
-      "mailto:anu.3dprints@gmail.com?subject=Product%20Enquiry&body=Hello,%20I%20am%20interested%20in%20your%20products.%20Please%20share%20details.";
-}
-</script>
+<div class="bottom-border"></div>
 
 </body>
 </html>
