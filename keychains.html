@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keychains Collection</title>
+
+  <style>
+    body {
+      text-align: center;
+      background-color: #fff9e6;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #ff9900;
+      margin: 25px 0;
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fade 0.6s ease-in-out;
+    }
+
+    .slide img {
+      width: 90%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 12px;
+      border: 3px solid #ccc;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease;
+    }
+
+    .slide img:hover {
+      transform: scale(1.03);
+    }
+
+    .caption {
+      color: #333;
+      margin-top: 15px;
+      font-size: 22px;
+      background-color: #fff;
+      padding: 6px 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Dots */
+    .dots-container {
+      margin-top: 20px;
+    }
+
+    .dot {
+      height: 14px;
+      width: 14px;
+      margin: 0 6px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .active-dot {
+      background-color: #ff9900;
+      transform: scale(1.3);
+    }
+
+    @media (max-width: 768px) {
+      .slide img {
+        width: 99%;
+      }
+      h3 {
+        font-size: 25px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+  <h1>Keychains Collection</h1>
+
+  <div class="slideshow-container" onclick="nextSlide()">
+
+    <div class="slide">
+      <img src="https://i.postimg.cc/8PtjFrN2/Whats-App-Image-2025-11-13-at-17-21-01-f874ea59.jpg">
+      <div class="caption">Letter Keychain</div>
+    </div>
+
+    <div class="slide">
+      <img src="https://i.postimg.cc/YqyS3KZm/Whats-App-Image-2025-11-13-at-16-38-51-95a7e4ab.jpg">
+      <div class="caption">Custom Name Tag Keychain</div>
+    </div>
+
+    <div class="slide">
+      <img src="https://i.postimg.cc/QdMQBmwt/Whats-App-Image-2025-11-11-at-21-44-53-fcc15956.jpg">
+      <div class="caption">NameVibe Keychain</div>
+    </div>
+
+    <div class="slide">
+      <img src="https://i.postimg.cc/d17n7YHx/Whats-App-Image-2025-11-11-at-21-44-54-bf83779a.jpg">
+      <div class="caption">Unicorn Keychain</div>
+    </div>
+
+  </div>
+
+  <!-- Dots -->
+  <div class="dots-container">
+    <span class="dot" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
+    <span class="dot" onclick="goToSlide(3)"></span>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+    const dots = document.getElementsByClassName("dot");
+
+    function showSlide(index) {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        dots[i].classList.remove("active-dot");
+      }
+      slides[index].style.display = "flex";
+      dots[index].classList.add("active-dot");
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      showSlide(index);
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "ArrowRight") nextSlide();
+      if (event.key === "ArrowLeft") prevSlide();
+    });
+
+    showSlide(currentIndex);
+  </script>
+
+</body>
+</html>
